@@ -18,7 +18,7 @@ const App = () => {
       <Canvas
         shadows
         camera={{
-          position: [50, 20, 50],
+          position: [30, 20, 30],
           fov: 45,
         }}
       >

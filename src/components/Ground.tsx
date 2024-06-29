@@ -27,7 +27,7 @@ export const Ground = () => {
   }, [normal, roughness])
 
   const { color } = useControls({
-    color: { value: [0.01, 0.01, 0.01], label: 'Ground Color' },
+    color: { value: [0.1, 0.1, 0.1], label: 'Ground Color' },
   })
 
   return (

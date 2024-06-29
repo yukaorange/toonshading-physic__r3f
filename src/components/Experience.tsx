@@ -11,7 +11,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
 export const Experience = (): JSX.Element => {
-  const lightPosition = useRef(new THREE.Vector3(0, 90, 0))
+  const lightPosition = useRef(new THREE.Vector3(-10, 1, 10))
 
   const angle = useRef(0)
 
@@ -19,12 +19,14 @@ export const Experience = (): JSX.Element => {
 
   useFrame((state) => {
     const { clock } = state
-    const elapsedTime = clock.getElapsedTime()
-    angle.current = elapsedTime * 1
 
-    lightPosition.current.x = 70 * Math.cos(angle.current) * radius
+    const elapsedTime = clock.getElapsedTime()
+
+    angle.current = elapsedTime * 0.1
+
+    // lightPosition.current.x = 70 * Math.cos(angle.current) * radius
     // lightPosition.current.y = 70 * Math.cos(angle.current) * radius
-    lightPosition.current.z = 70 * Math.sin(angle.current) * radius
+    // lightPosition.current.z = 70 * Math.sin(angle.current) * radius
   })
 
   return (

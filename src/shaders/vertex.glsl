@@ -19,6 +19,8 @@ void main() {
 
     vec3 lightDirection = normalize(uLightPosition - viewPosition);
 
+    vec3 normal = normalize(normalMatrix * normal);
+
     vec3 tangent = normalize(cross(normal, vec3(0.0, 1.0, 0.0)));
 
     vec3 bitangent = normalize(cross(normal, tangent));

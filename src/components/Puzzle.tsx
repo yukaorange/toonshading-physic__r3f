@@ -64,7 +64,7 @@ class ToonShaderMaterial extends THREE.ShaderMaterial {
       fragmentShader: fragment,
       uniforms: {
         uEdgeRatio: {
-          value: 0.02,
+          value: 0.03,
         },
         uEdge: { value: false },
         uLightPosition: {
@@ -110,7 +110,7 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
   backMaterial.current.uniforms.uStepTexture.value = stepTexture
 
   const { uEdgeRatio } = useControls({
-    uEdgeRatio: { value: 0.02, min: 0.01, max: 0.027, step: 0.001 },
+    uEdgeRatio: { value: 0.04, min: 0.01, max: 0.08, step: 0.001 },
   })
 
   useEffect(() => {
@@ -129,12 +129,19 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
     frontMaterial.current.side = THREE.FrontSide
   })
 
-  const jump = (key) => {
+  const jump = (key: string) => {
     const rigidBody = rigidBodyRef.current[key]
 
-    console.log(rigidBody)
-
     rigidBody?.applyImpulse({ x: 0, y: 980, z: 0 }, true)
+
+    rigidBody?.applyTorqueImpulse(
+      {
+        x: 3000 * (Math.random() - 0.5),
+        y: 3000 * (Math.random() - 0.5),
+        z: 3000 * (Math.random() - 0.5),
+      },
+      true,
+    )
   }
 
   const rigidBodyRef = useRef<{ [key: string]: RapierRigidBody | null }>({})
@@ -149,6 +156,7 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
         positions[key] = nodes[key as keyof typeof nodes].position.clone()
 
         const space = 5
+
         const nodeLength = Object.keys(nodes).length
 
         positions[key].setY(

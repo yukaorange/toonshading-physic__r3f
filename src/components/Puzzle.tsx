@@ -155,13 +155,13 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
 
         positions[key] = nodes[key as keyof typeof nodes].position.clone()
 
-        const space = 5
+        const space = 4
 
         const nodeLength = Object.keys(nodes).length
 
         positions[key].setY(
           nodes[key as keyof typeof nodes].position.y +
-            space * (nodeLength - i - 1),
+            space * (nodeLength + i) ,
         )
 
         return (
@@ -200,4 +200,4 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
   )
 }
 
-// useGLTF.preload('/models/cube_puzzle.glb')
+useGLTF.preload('/models/cube_puzzle.glb')

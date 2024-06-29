@@ -132,7 +132,7 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
   const jump = (key: string) => {
     const rigidBody = rigidBodyRef.current[key]
 
-    rigidBody?.applyImpulse({ x: 0, y: 980, z: 0 }, true)
+    rigidBody?.applyImpulse({ x: 0, y: 1500, z: 0 }, true)
 
     rigidBody?.applyTorqueImpulse(
       {

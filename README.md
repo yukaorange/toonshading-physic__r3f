@@ -22,3 +22,6 @@ npm i
 mpm run dev
 
 ```
+  
+![image](https://github.com/yukaorange/toonshading-physic__r3f/assets/98954503/5382c0e7-6db3-4387-87b9-64f3bfa72bb3)
+

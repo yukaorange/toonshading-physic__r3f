@@ -79,6 +79,9 @@ class ToonShaderMaterial extends THREE.ShaderMaterial {
         uStepTexture: {
           value: null,
         },
+        uNormalMatrix: {
+          value: new THREE.Matrix3(),
+        },
       },
     })
   }
@@ -119,7 +122,7 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
     backMaterial.current.uniforms.uEdgeRatio.value = uEdgeRatio
 
     backMaterial.current.uniforms.uLightPosition.value = lightPosition
-  }, [lightPosition, uEdgeRatio])
+  }, [lightPosition, uEdgeRatio, nodes])
 
   useFrame(() => {
     backMaterial.current.uniforms.uEdge.value = true

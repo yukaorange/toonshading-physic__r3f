@@ -19,17 +19,15 @@ void main() {
 
     vec3 lightDirection = normalize(uLightPosition - worldPosition);
 
-    // mat3 normalMatrix = transpose(inverse(mat3(modelMatrix)));
+    vec3 transformedNormal = normalize(normalMatrix * normal);
 
-    vec3 normal = normalize(normalMatrix * normal);
+    vec3 tangent = normalize(cross(transformedNormal, vec3(0.0, 1.0, 0.0)));
 
-    vec3 tangent = normalize(cross(normal, vec3(0.0, 1.0, 0.0)));
+    vec3 bitangent = normalize(cross(transformedNormal, tangent));
 
-    vec3 bitangent = normalize(cross(normal, tangent));
+    vEyeDirection = normalize(vec3(dot(tangent, eyeDirection), dot(bitangent, eyeDirection), dot(transformedNormal, eyeDirection)));
 
-    vEyeDirection = normalize(vec3(dot(tangent, eyeDirection), dot(bitangent, eyeDirection), dot(normal, eyeDirection)));
-
-    vLightDirection = normalize(vec3(dot(tangent, lightDirection), dot(bitangent, lightDirection), dot(normal, lightDirection)));
+    vLightDirection = normalize(vec3(dot(tangent, lightDirection), dot(bitangent, lightDirection), dot(transformedNormal, lightDirection)));
 
     vUv = uv;
   }

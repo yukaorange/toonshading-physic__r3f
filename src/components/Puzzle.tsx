@@ -161,7 +161,7 @@ export const Puzzle = ({ lightPosition, ...props }: PuzzleProps) => {
 
         positions[key].setY(
           nodes[key as keyof typeof nodes].position.y +
-            space * (nodeLength + i) ,
+            space * (nodeLength + i),
         )
 
         return (

@@ -11,7 +11,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
 export const Experience = (): JSX.Element => {
-  const lightPosition = useRef(new THREE.Vector3(-10, 1, 10))
+  const lightPosition = useRef(new THREE.Vector3(-100, 1, 100))
 
   const angle = useRef(0)
 
@@ -32,10 +32,10 @@ export const Experience = (): JSX.Element => {
   return (
     <>
       <Physics gravity={[0, -9.81, 0]}>
-        <color attach="background" args={['#272727']} />
+        <color attach="background" args={['#000000']} />
         <OrbitControls />
         <ambientLight intensity={0.01} />
-        <directionalLight intensity={0.2} position={lightPosition.current} />
+        {/* <directionalLight intensity={0.2} position={lightPosition.current} /> */}
         <Puzzle lightPosition={lightPosition.current} />
         <Ground />
         <Wall />

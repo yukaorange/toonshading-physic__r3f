@@ -27,7 +27,7 @@ void main() {
 
     gl_FragColor = texture2D(uTexture, vUv) * texture2D(uStepTexture, vec2(step, 1.0)) + vec4(vec3(specular), 1.0);
 
-    // gl_FragColor = texture2D(uTexture, vUv) + vec4(vec3(specular), 1.0);
+    // gl_FragColor = vec4(vLightDirection.r, vLightDirection.r, vLightDirection.r, 1.0);
   }
 
 }

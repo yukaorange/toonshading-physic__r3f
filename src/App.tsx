@@ -23,7 +23,7 @@ const App = () => {
         }}
       >
         <Suspense fallback={null}>
-          <Perf position="top-left" />
+          {/* <Perf position="top-left" /> */}
           <Experience />
         </Suspense>
       </Canvas>

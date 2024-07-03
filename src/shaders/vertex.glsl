@@ -15,9 +15,11 @@ void main() {
 
     vec3 viewPosition = (viewMatrix * modelMatrix * vec4(position, 1.0)).xyz;
 
-    vec3 eyeDirection = normalize(cameraPosition - viewPosition);
+    vec3 eyeDirection = normalize(cameraPosition - worldPosition);
 
-    vec3 lightDirection = normalize(uLightPosition - viewPosition);
+    vec3 lightDirection = normalize(uLightPosition - worldPosition);
+
+    // mat3 normalMatrix = transpose(inverse(mat3(modelMatrix)));
 
     vec3 normal = normalize(normalMatrix * normal);
 
